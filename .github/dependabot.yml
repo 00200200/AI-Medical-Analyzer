@@ -1,0 +1,135 @@
+version: 2
+updates:
+  # =============================================================================
+  # PYTHON / BACKEND DEPENDENCIES (FastAPI + Ollama)
+  # =============================================================================
+  - package-ecosystem: 'pip'
+    directory: '/backend'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+      time: '09:00'
+    open-pull-requests-limit: 10
+    reviewers:
+      - '00200200'
+    assignees:
+      - '00200200'
+    commit-message:
+      prefix: 'backend'
+      include: 'scope'
+    labels:
+      - 'dependencies'
+      - 'backend'
+      - 'python'
+    target-branch: 'main'
+    versioning-strategy: 'increase'
+
+    groups:
+      fastapi:
+        patterns:
+          - 'fastapi'
+          - 'uvicorn'
+          - 'starlette'
+          - 'pydantic*'
+        update-types:
+          - 'minor'
+          - 'patch'
+      ollama:
+        patterns:
+          - 'ollama'
+        update-types:
+          - 'minor'
+          - 'patch'
+
+    ignore:
+      - dependency-name: 'fastapi'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'pydantic'
+        update-types: ['version-update:semver-major']
+
+  # =============================================================================
+  # NODE.JS / FRONTEND DEPENDENCIES (React + Axios)
+  # =============================================================================
+  - package-ecosystem: 'npm'
+    directory: '/frontend'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+      time: '09:30'
+    open-pull-requests-limit: 10
+    reviewers:
+      - '00200200'
+    assignees:
+      - '00200200'
+    commit-message:
+      prefix: 'frontend'
+      include: 'scope'
+    labels:
+      - 'dependencies'
+      - 'frontend'
+      - 'javascript'
+    target-branch: 'main'
+    versioning-strategy: 'increase'
+
+    groups:
+      react:
+        patterns:
+          - 'react'
+          - 'react-dom'
+          - 'react-router-dom'
+        update-types:
+          - 'minor'
+          - 'patch'
+      axios:
+        patterns:
+          - 'axios'
+        update-types:
+          - 'minor'
+          - 'patch'
+
+    ignore:
+      - dependency-name: 'react'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'react-dom'
+        update-types: ['version-update:semver-major']
+
+  # =============================================================================
+  # DOCKER DEPENDENCIES
+  # =============================================================================
+  - package-ecosystem: 'docker'
+    directory: '/backend'
+    schedule:
+      interval: 'weekly'
+      day: 'tuesday'
+      time: '09:00'
+    open-pull-requests-limit: 5
+    reviewers:
+      - '00200200'
+    assignees:
+      - '00200200'
+    commit-message:
+      prefix: 'docker'
+      include: 'scope'
+    labels:
+      - 'dependencies'
+      - 'docker'
+      - 'backend'
+
+  - package-ecosystem: 'docker'
+    directory: '/frontend'
+    schedule:
+      interval: 'weekly'
+      day: 'tuesday'
+      time: '09:30'
+    open-pull-requests-limit: 5
+    reviewers:
+      - '00200200'
+    assignees:
+      - '00200200'
+    commit-message:
+      prefix: 'docker'
+      include: 'scope'
+    labels:
+      - 'dependencies'
+      - 'docker'
+      - 'frontend'
