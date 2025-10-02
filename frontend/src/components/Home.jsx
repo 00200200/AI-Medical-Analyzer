@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Form from './Form';
 
 const Home = () => {
-	const [bloodResults, setBloodResults] = useState('');
 	const [analysis, setAnalysis] = useState('');
 	const [loading, setLoading] = useState(false);
 
-	const apiBaseUrl = 'http://localhost:8000';
-
-	const handleSubmit = async e => {
-		e.preventDefault();
+	const handleSubmit = async prompt => {
 		setLoading(true);
 		try {
-			const response = await axios.post(`${apiBaseUrl}/analyze`, {
-				blood_results: bloodResults,
+			const response = await axios.post('http://localhost:8000/analyze', {
+				blood_results: prompt,
 			});
 			setAnalysis(response.data.analysis);
 		} catch (error) {
@@ -25,25 +22,16 @@ const Home = () => {
 
 	return (
 		<div style={{ maxWidth: 800, margin: '32px auto', padding: 16 }}>
-			<h1>Analizator Wyników Krwi</h1>
-			<form onSubmit={handleSubmit}>
-				<textarea
-					style={{ width: '100%', height: 180, padding: 8 }}
-					placeholder='Wprowadź wyniki badań krwi'
-					value={bloodResults}
-					onChange={e => setBloodResults(e.target.value)}
-				/>
-				<div style={{ marginTop: 12 }}>
-					<button type='submit' disabled={loading}>
-						{loading ? 'Analizowanie...' : 'Analizuj'}
-					</button>
-				</div>
-			</form>
+			<h1>🏥 Blood Test Analyzer</h1>
+
+			<Form onSubmit={handleSubmit} />
+
+			{loading && <div>Analyzing...</div>}
 
 			{analysis && (
 				<div style={{ marginTop: 24, background: '#f7f7f7', padding: 12 }}>
-					<h3>Wynik analizy:</h3>
-					<p>{analysis}</p>
+					<h3>Analysis:</h3>
+					<p style={{ whiteSpace: 'pre-wrap' }}>{analysis}</p>
 				</div>
 			)}
 		</div>

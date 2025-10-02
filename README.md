@@ -47,4 +47,17 @@ docker-compose.yml
   └── dependabot.yml
 ```
 
-a 
+
+
+{
+    "role": "user",
+    "content": [
+        {
+          
+        "type": "text", "text": "Patient: 22 years old, no chronic diseases, not taking any medication. test results:
+        WBC: 6.2 
+        RBC: 4.9
+        HGB: 14.5
+        }
+    ]
+}
