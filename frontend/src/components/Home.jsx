@@ -7,17 +7,17 @@ const Home = () => {
 	const [analysis, setAnalysis] = useState('');
 	const [loading, setLoading] = useState(false);
 	const [dots, setDots] = useState('');
-	
-	  useEffect(() => {
+
+	useEffect(() => {
 		if (loading) {
-		  const interval = setInterval(() => {
-			setDots(prev => (prev.length < 3 ? prev + '.' : ''));
-		  }, 500);
-		  return () => clearInterval(interval);
+			const interval = setInterval(() => {
+				setDots(prev => (prev.length < 3 ? prev + '.' : ''));
+			}, 500);
+			return () => clearInterval(interval);
 		} else {
-		  setDots('');
+			setDots('');
 		}
-	  }, [loading]);
+	}, [loading]);
 
 	const handleSubmit = async prompt => {
 		setLoading(true);
@@ -34,43 +34,29 @@ const Home = () => {
 	};
 
 	return (
-		<div style={{ maxWidth: 800, margin: '0 auto', padding: 16 }}>
+		<div className='max-w-4xl mx-auto p-4 pt-20'>
 			<Form onSubmit={handleSubmit} loading={loading} />
 
 			{loading && (
-				<div
-					style={{
-						marginTop: 50,
-						marginBottom: 50,
-						color: '#ffffff',
-						fontSize: 18,
-						fontWeight: 'bold',
-						fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-						textAlign: 'center',
-					}}>
-					Analyzing{dots}
+				<div className='mt-12 mb-12 text-white text-xl font-bold text-center'>
+					<div className='inline-flex items-center gap-2 bg-gradient-to-r from-purple-500/20 to-primary-500/20 px-6 py-3 rounded-2xl border border-purple-500/30'>
+						<div className='w-2 h-2 bg-purple-400 rounded-full animate-bounce'></div>
+						<div
+							className='w-2 h-2 bg-primary-400 rounded-full animate-bounce'
+							style={{ animationDelay: '0.1s' }}></div>
+						<div className='w-2 h-2 bg-purple-400 rounded-full animate-bounce' style={{ animationDelay: '0.2s' }}></div>
+						<span className='ml-2'>Analyzing{dots}</span>
+					</div>
 				</div>
 			)}
 
 			{analysis && !loading && (
-				<div
-					style={{
-						marginTop: 50,
-						marginBottom: 50,
-						background: 'rgba(255, 255, 255, 0.5)',
-						color: '#2C3E4E',
-						padding: 20,
-						borderRadius: 16,
-						fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-						boxShadow: '0 8px 24px rgba(0, 0, 0, 0.2)',
-						backdropFilter: 'blur(6px)',
-						whiteSpace: 'pre-wrap',
-						width: '100%',
-						maxWidth: '1200px',
-						minWidth: '600px',
-					}}>
-					<h3 style={{ marginTop: 0 }}>Analysis:</h3>
-					{formatAnalysis(analysis)}
+				<div className='mt-12 mb-12 bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl text-white p-8 rounded-3xl shadow-2xl border border-purple-500/20 whitespace-pre-wrap w-full max-w-5xl min-w-96 relative overflow-hidden'>
+					<div className='absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 via-primary-500 to-purple-500'></div>
+					<h3 className='mt-0 mb-6 text-2xl font-bold bg-gradient-to-r from-purple-300 to-primary-300 bg-clip-text text-transparent'>
+						Analysis:
+					</h3>
+					<div className='text-gray-100 leading-relaxed text-lg'>{formatAnalysis(analysis)}</div>
 				</div>
 			)}
 		</div>
