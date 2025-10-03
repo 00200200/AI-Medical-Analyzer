@@ -5,7 +5,12 @@ try:
 
     chat = Client(host=os.getenv("OLLAMA_HOST", "http://ollama:11434")).chat
 except Exception:
-    chat = ollama.chat
+    import ollama
+
+    def chat(**kwargs):
+        return ollama.chat(
+            host=os.getenv("OLLAMA_HOST", "http://ollama:11434"), **kwargs
+        )
 
 
 model = "edwardlo12/medgemma-4b-it-Q4_K_M"
@@ -39,10 +44,11 @@ def generate_answer_image(image: str) -> str:
         {
             "role": "user",
             "content": "Describe the findings on this X-ray image.",
+            "images": [image],
         },
     ]
     try:
-        answer = chat(model=model, messages=messages, images=[image])
+        answer = chat(model=model, messages=messages)
         return answer["message"]["content"]
     except Exception as e:
         print(f"Error calling Ollama: {str(e)}")
