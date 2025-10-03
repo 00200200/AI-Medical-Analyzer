@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { FaMicroscope, FaImage, FaTimes } from 'react-icons/fa';
+import { FaMicroscope, FaImage, FaTimes, FaArrowLeft } from 'react-icons/fa';
 import { formatAnalysis } from './formatAnalysis';
 
-const ImageAnalyzer = () => {
+const ImageAnalyzer = ({ navigateTo }) => {
 	const [imagePreviewUrl, setImagePreviewUrl] = useState('');
 	const [imageBase64, setImageBase64] = useState('');
 	const [errors, setErrors] = useState({});
@@ -71,8 +71,19 @@ const ImageAnalyzer = () => {
 	};
 
 	return (
-<div className='max-w-4xl mx-auto p-4 pt-20'>
-			<div className='w-full mx-auto mt-5 mb-12 max-w-5xl min-w-96 
+		<div className='max-w-4xl mx-auto p-4 pt-20'>
+			{/* Back Button */}
+			<div className='mb-8'>
+				<button
+					onClick={() => navigateTo('landing')}
+					className='inline-flex items-center space-x-2 bg-white/10 backdrop-blur-xl text-white px-4 py-2 rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105'>
+					<FaArrowLeft className='text-sm' />
+					<span>Back to home</span>
+				</button>
+			</div>
+
+			<div
+				className='w-full mx-auto mt-5 mb-12 max-w-5xl min-w-96 
 			                bg-gradient-to-br from-white/10 to-white/5 
 			                p-12 rounded-3xl shadow-2xl backdrop-blur-xl 
 			                relative overflow-hidden'>
@@ -148,9 +159,7 @@ const ImageAnalyzer = () => {
 					<h3 className='mt-0 mb-6 text-2xl font-bold bg-gradient-to-r from-purple-300 to-primary-300 bg-clip-text text-transparent'>
 						Analysis:
 					</h3>
-					<div className='text-gray-100 leading-relaxed text-lg'>
-            {formatAnalysis(analysis)}
-          </div>
+					<div className='text-gray-100 leading-relaxed text-lg'>{formatAnalysis(analysis)}</div>
 				</div>
 			)}
 		</div>

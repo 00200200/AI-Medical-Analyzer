@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { formatAnalysis } from './formatAnalysis';
 import Form from './Form';
+import { FaHome, FaArrowLeft } from 'react-icons/fa';
 
-const Home = () => {
+const Home = ({ navigateTo }) => {
 	const [analysis, setAnalysis] = useState('');
 	const [loading, setLoading] = useState(false);
 	const [dots, setDots] = useState('');
@@ -35,6 +36,16 @@ const Home = () => {
 
 	return (
 		<div className='max-w-4xl mx-auto p-4 pt-20'>
+			{/* Back Button */}
+			<div className='mb-8'>
+				<button
+					onClick={() => navigateTo('landing')}
+					className='inline-flex items-center space-x-2 bg-white/10 backdrop-blur-xl text-white px-4 py-2 rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105'>
+					<FaArrowLeft className='text-sm' />
+					<span>Back to home</span>
+				</button>
+			</div>
+
 			<Form onSubmit={handleSubmit} loading={loading} />
 
 			{loading && (
@@ -56,9 +67,7 @@ const Home = () => {
 					<h3 className='mt-0 mb-6 text-2xl font-bold bg-gradient-to-r from-purple-300 to-primary-300 bg-clip-text text-transparent'>
 						Analysis:
 					</h3>
-					<div className='text-gray-100 leading-relaxed text-lg'>
-						{formatAnalysis(analysis)}
-					</div>
+					<div className='text-gray-100 leading-relaxed text-lg'>{formatAnalysis(analysis)}</div>
 				</div>
 			)}
 		</div>

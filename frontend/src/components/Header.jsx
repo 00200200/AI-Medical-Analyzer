@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
-import { FaBars, FaFlask, FaImage } from 'react-icons/fa';
+import { FaBars, FaFlask, FaImage, FaHome } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
 const Header = ({ navigateTo, activeScreen }) => {
 	const [menuOpen, setMenuOpen] = useState(false);
 
 	const menuItems = [
-		{ name: 'BloodTestAnalyzer', key: 'blood', icon: <FaFlask /> },
-		{ name: 'ImageAnalyzer', key: 'image', icon: <FaImage /> },
+		{ name: 'Home', key: 'landing', icon: <FaHome /> },
+		{ name: 'Blood Analysis', key: 'blood', icon: <FaFlask /> },
+		{ name: 'Image Analysis', key: 'image', icon: <FaImage /> },
 	];
 
 	const activeItem = menuItems.find(item => item.key === activeScreen);
 
 	return (
 		<header
-			className="
+			className='
 				w-full 
 				bg-gradient-to-r from-gray-900/40 via-gray-800/30 to-gray-900/40
 				backdrop-blur-md
@@ -24,10 +25,9 @@ const Header = ({ navigateTo, activeScreen }) => {
 				fixed top-0 left-0 
 				z-50 
 				shadow-xl
-			"
-		>
+			'>
 			<div
-				className="
+				className='
 					absolute left-5 w-10 h-10 
 					rounded-xl 
 					bg-white/10 
@@ -38,22 +38,19 @@ const Header = ({ navigateTo, activeScreen }) => {
 					hover:bg-white/20 
 					hover:scale-110 
 					hover:shadow-lg hover:shadow-purple-500/25
-				"
-				onClick={() => setMenuOpen(!menuOpen)}
-			>
-				<FaBars size={24} className="text-white" />
+				'
+				onClick={() => setMenuOpen(!menuOpen)}>
+				<FaBars size={24} className='text-white' />
 			</div>
 
-			<h1 className="text-xl m-0 font-sans flex items-center text-white">
+			<h1 className='text-xl m-0 font-sans flex items-center text-white'>
 				{activeItem.icon}
-				<span className="ml-2.5">
-					{activeItem.key === 'blood' ? 'BloodTestAnalyzer' : 'ImageAnalyzer'}
-				</span>
+				<span className='ml-2.5'>{activeItem.name}</span>
 			</h1>
 
 			{menuOpen && (
 				<div
-					className="
+					className='
 						absolute top-16 left-5 
 						bg-white/20 
 						backdrop-blur-md 
@@ -62,8 +59,7 @@ const Header = ({ navigateTo, activeScreen }) => {
 						p-3 
 						flex flex-col min-w-52 
 						border border-purple-200/30
-					"
-				>
+					'>
 					{menuItems.map(item => (
 						<button
 							key={item.key}
@@ -82,8 +78,7 @@ const Header = ({ navigateTo, activeScreen }) => {
 							onClick={() => {
 								navigateTo(item.key);
 								setMenuOpen(false);
-							}}
-						>
+							}}>
 							{item.icon}
 							{item.name}
 						</button>
