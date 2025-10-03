@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { formatAnalysis } from './formatAnalysis';
 import { FaMicroscope, FaImage, FaTimes } from 'react-icons/fa';
 import './Form.css';
 
@@ -65,7 +66,7 @@ const ImageAnalyzer = () => {
 			setAnalysis(response.data.analysis);
 		} catch (error) {
 			console.error('Error during image analysis:', error);
-			setAnalysis('An error occurred during image analysis.');
+			setAnalysis('An error occurred during analysis.');
 		}
 		setLoading(false);
 	};
@@ -117,7 +118,7 @@ const ImageAnalyzer = () => {
 					</div>
 
 					<button type='submit' className='btn btn-green' disabled={loading}>
-						{loading ? `Analyzing${dots}` : 'Analyze Image'}
+						Analyze Image
 					</button>
 				</form>
 			</div>
@@ -155,7 +156,7 @@ const ImageAnalyzer = () => {
 						minWidth: '600px',
 					}}>
 					<h3 style={{ marginTop: 0 }}>Analysis:</h3>
-					<p>{analysis}</p>
+					{formatAnalysis(analysis)}
 				</div>
 			)}
 		</div>

@@ -17,18 +17,6 @@ const Form = ({ onSubmit, loading }) => {
   const [errors, setErrors] = useState({});
   const [diseaseInput, setDiseaseInput] = useState('');
   const [medicationInput, setMedicationInput] = useState('');
-  const [dots, setDots] = useState('');
-
-  useEffect(() => {
-    if (loading) {
-      const interval = setInterval(() => {
-        setDots(prev => (prev.length < 3 ? prev + '.' : ''));
-      }, 500);
-      return () => clearInterval(interval);
-    } else {
-      setDots('');
-    }
-  }, [loading]);
 
   const handleAddDisease = () => {
     if (diseaseInput.trim()) {
@@ -229,7 +217,7 @@ const Form = ({ onSubmit, loading }) => {
         </div>
 
         <button type='submit' className='btn btn-green' disabled={loading}>
-          {loading ? `Analyzing${dots}` : 'Analyze Results'}
+          Analyze Results
         </button>
       </form>
     </div>

@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { formatAnalysis } from './formatAnalysis';
 import Form from './Form';
 
 const Home = () => {
 	const [analysis, setAnalysis] = useState('');
 	const [loading, setLoading] = useState(false);
 	const [dots, setDots] = useState('');
-
-	useEffect(() => {
-		if (!loading) {
-			setDots('');
-			return;
-		}
-		const interval = setInterval(() => {
+	
+	  useEffect(() => {
+		if (loading) {
+		  const interval = setInterval(() => {
 			setDots(prev => (prev.length < 3 ? prev + '.' : ''));
-		}, 500);
-		return () => clearInterval(interval);
-	}, [loading]);
+		  }, 500);
+		  return () => clearInterval(interval);
+		} else {
+		  setDots('');
+		}
+	  }, [loading]);
 
 	const handleSubmit = async prompt => {
 		setLoading(true);
@@ -27,14 +28,14 @@ const Home = () => {
 			setAnalysis(response.data.analysis);
 		} catch (error) {
 			console.error('Error during analysis:', error);
-			setAnalysis('Wystąpił błąd podczas analizy.');
+			setAnalysis('An error occurred during analysis.');
 		}
 		setLoading(false);
 	};
 
 	return (
 		<div style={{ maxWidth: 800, margin: '0 auto', padding: 16 }}>
-			<Form onSubmit={handleSubmit} />
+			<Form onSubmit={handleSubmit} loading={loading} />
 
 			{loading && (
 				<div
@@ -69,7 +70,7 @@ const Home = () => {
 						minWidth: '600px',
 					}}>
 					<h3 style={{ marginTop: 0 }}>Analysis:</h3>
-					<p>{analysis}</p>
+					{formatAnalysis(analysis)}
 				</div>
 			)}
 		</div>
