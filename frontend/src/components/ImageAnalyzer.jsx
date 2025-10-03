@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FaMicroscope, FaImage, FaTimes } from 'react-icons/fa';
+import { formatAnalysis } from './formatAnalysis';
 
 const ImageAnalyzer = () => {
 	const [imagePreviewUrl, setImagePreviewUrl] = useState('');
@@ -70,10 +71,11 @@ const ImageAnalyzer = () => {
 	};
 
 	return (
-		<div className='max-w-4xl mx-auto p-4 pt-20'>
-			<div className='w-[90%] mt-24 mb-12 max-w-5xl min-w-96 bg-gradient-to-br from-white/10 to-white/5 p-12 rounded-3xl shadow-2xl backdrop-blur-xl border border-white/20 relative overflow-hidden'>
-				<div className='absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent'></div>
-
+<div className='max-w-4xl mx-auto p-4 pt-20'>
+			<div className='w-full mx-auto mt-5 mb-12 max-w-5xl min-w-96 
+			                bg-gradient-to-br from-white/10 to-white/5 
+			                p-12 rounded-3xl shadow-2xl backdrop-blur-xl 
+			                relative overflow-hidden'>
 				<h2 className='text-xl mb-5 text-center text-white'>
 					<div className='inline-flex items-center'>
 						<FaMicroscope size={24} className='mr-2' />
@@ -122,7 +124,7 @@ const ImageAnalyzer = () => {
 						type='submit'
 						className='w-full max-w-xs mx-auto px-8 py-4 bg-gradient-to-r from-purple-500 to-purple-600 text-white font-bold text-lg rounded-2xl shadow-2xl hover:from-purple-600 hover:to-purple-700 hover:-translate-y-1 hover:shadow-purple-500/40 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none uppercase tracking-wide'
 						disabled={loading}>
-						{loading ? `Analyzing${dots}` : 'Analyze Image'}
+						Analyze Image
 					</button>
 				</form>
 			</div>
@@ -146,7 +148,9 @@ const ImageAnalyzer = () => {
 					<h3 className='mt-0 mb-6 text-2xl font-bold bg-gradient-to-r from-purple-300 to-primary-300 bg-clip-text text-transparent'>
 						Analysis:
 					</h3>
-					<p className='text-gray-100 leading-relaxed text-lg'>{analysis}</p>
+					<div className='text-gray-100 leading-relaxed text-lg'>
+            {formatAnalysis(analysis)}
+          </div>
 				</div>
 			)}
 		</div>

@@ -56,7 +56,9 @@ const Home = () => {
 					<h3 className='mt-0 mb-6 text-2xl font-bold bg-gradient-to-r from-purple-300 to-primary-300 bg-clip-text text-transparent'>
 						Analysis:
 					</h3>
-					<div className='text-gray-100 leading-relaxed text-lg'>{formatAnalysis(analysis)}</div>
+					<div className='text-gray-100 leading-relaxed text-lg'>
+						{formatAnalysis(analysis)}
+					</div>
 				</div>
 			)}
 		</div>

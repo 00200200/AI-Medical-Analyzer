@@ -91,9 +91,10 @@ const Form = ({ onSubmit, loading }) => {
 	};
 
 	return (
-		<div className='w-[90%] mt-24 mb-12 max-w-5xl min-w-96 bg-gradient-to-br from-white/10 to-white/5 p-12 rounded-3xl shadow-2xl backdrop-blur-xl border border-white/20 relative overflow-hidden'>
-			<div className='absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent'></div>
-
+  <div className='w-full mx-auto mt-5 mb-12 max-w-5xl min-w-96 
+                  bg-gradient-to-br from-white/10 to-white/5 
+                  p-12 rounded-3xl shadow-2xl backdrop-blur-xl 
+                  relative overflow-hidden'>
 			<h2 className='text-xl mb-5 text-center text-white'>
 				<div className='inline-flex items-center'>
 					<MdAssignmentInd size={24} className='mr-2' />
@@ -112,7 +113,13 @@ const Form = ({ onSubmit, loading }) => {
 						placeholder='e.g. 35'
 						value={formData.age}
 						onChange={e => setFormData({ ...formData, age: e.target.value })}
-						className={`w-full px-4 py-3 border rounded-xl text-sm bg-gradient-to-br from-white/10 to-white/5 text-white shadow-lg transition-all duration-300 focus:outline-none focus:border-purple-500 focus:shadow-purple-500/40 focus:bg-gradient-to-br focus:from-white/15 focus:to-white/8 focus:-translate-y-0.5 ${
+						className={`w-full px-4 py-3 border rounded-xl text-sm 
+						bg-gradient-to-br from-white/10 to-white/5 
+						text-gray-900 placeholder-gray-400 shadow-lg 
+						transition-all duration-300 focus:outline-none 
+						focus:border-purple-500 focus:shadow-purple-500/40 
+						focus:bg-gradient-to-br focus:from-white/15 focus:to-white/8 
+						focus:-translate-y-0.5 ${
 							errors.age ? 'border-red-500 shadow-red-500/50' : 'border-white/20'
 						}`}
 					/>
@@ -127,21 +134,29 @@ const Form = ({ onSubmit, loading }) => {
 					<select
 						value={formData.gender}
 						onChange={e => setFormData({ ...formData, gender: e.target.value })}
-						className={`w-full px-4 py-3 border rounded-xl text-sm bg-gradient-to-br from-white/10 to-white/5 text-white shadow-lg transition-all duration-300 focus:outline-none focus:border-purple-500 focus:shadow-purple-500/40 focus:bg-gradient-to-br focus:from-white/15 focus:to-white/8 focus:-translate-y-0.5 cursor-pointer ${
-							errors.gender ? 'border-red-500 shadow-red-500/50' : 'border-white/20'
-						}`}>
-						<option value='' className='bg-gray-900 text-white'>
-							Select gender
+						className={`w-full px-4 py-3 border rounded-xl text-sm 
+									bg-white text-gray-900 shadow-lg 
+									transition-all duration-300 focus:outline-none 
+									focus:border-purple-500 focus:shadow-purple-500/40 
+									focus:-translate-y-0.5 cursor-pointer ${
+									errors.gender ? 'border-red-500 shadow-red-500/50' : 'border-white/20'
+									}`}
+					>
+						<option value='' className='bg-white text-gray-900'>
+						Select gender
 						</option>
-						<option value='Male' className='bg-gray-900 text-white'>
-							Male
+						<option value='Male' className='bg-white text-gray-900'>
+						Male
 						</option>
-						<option value='Female' className='bg-gray-900 text-white'>
-							Female
+						<option value='Female' className='bg-white text-gray-900'>
+						Female
 						</option>
 					</select>
-					{errors.gender && <span className='text-red-400 text-xs font-bold mt-1'>{errors.gender}</span>}
-				</div>
+					{errors.gender && (
+						<span className='text-red-400 text-xs font-bold mt-1'>{errors.gender}</span>
+					)}
+					</div>
+
 
 				<div className='flex flex-col gap-2'>
 					<label className='inline-flex items-center text-white font-bold text-sm'>
@@ -154,8 +169,13 @@ const Form = ({ onSubmit, loading }) => {
 							placeholder='e.g. Type 2 Diabetes'
 							value={diseaseInput}
 							onChange={e => setDiseaseInput(e.target.value)}
-							className='flex-1 px-4 py-3 border border-white/20 rounded-xl text-sm bg-gradient-to-br from-white/10 to-white/5 text-white shadow-lg transition-all duration-300 focus:outline-none focus:border-purple-500 focus:shadow-purple-500/40 focus:bg-gradient-to-br focus:from-white/15 focus:to-white/8 focus:-translate-y-0.5'
-						/>
+							className={`w-full px-4 py-3 border rounded-xl text-sm 
+										bg-gradient-to-br from-white/10 to-white/5 
+										text-gray-900 placeholder-gray-400 shadow-lg 
+										transition-all duration-300 focus:outline-none 
+										focus:border-purple-500 focus:shadow-purple-500/40 
+										focus:bg-gradient-to-br focus:from-white/15 focus:to-white/8 
+										focus:-translate-y-0.5 `}						/>
 						<button
 							type='button'
 							className='px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-xl shadow-lg hover:from-primary-600 hover:to-primary-700 hover:-translate-y-1 hover:shadow-xl transition-all duration-300'
@@ -191,8 +211,13 @@ const Form = ({ onSubmit, loading }) => {
 							placeholder='e.g. Metformin 500mg'
 							value={medicationInput}
 							onChange={e => setMedicationInput(e.target.value)}
-							className='flex-1 px-4 py-3 border border-white/20 rounded-xl text-sm bg-gradient-to-br from-white/10 to-white/5 text-white shadow-lg transition-all duration-300 focus:outline-none focus:border-purple-500 focus:shadow-purple-500/40 focus:bg-gradient-to-br focus:from-white/15 focus:to-white/8 focus:-translate-y-0.5'
-						/>
+							className={`w-full px-4 py-3 border rounded-xl text-sm 
+										bg-gradient-to-br from-white/10 to-white/5 
+										text-gray-900 placeholder-gray-400 shadow-lg 
+										transition-all duration-300 focus:outline-none 
+										focus:border-purple-500 focus:shadow-purple-500/40 
+										focus:bg-gradient-to-br focus:from-white/15 focus:to-white/8 
+										focus:-translate-y-0.5`}						/>
 						<button
 							type='button'
 							className='px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-xl shadow-lg hover:from-primary-600 hover:to-primary-700 hover:-translate-y-1 hover:shadow-xl transition-all duration-300'
@@ -226,8 +251,13 @@ const Form = ({ onSubmit, loading }) => {
 						placeholder='Describe how you feel, any symptoms...'
 						value={formData.healthStatus}
 						onChange={e => setFormData({ ...formData, healthStatus: e.target.value })}
-						className='w-full px-4 py-3 border border-white/20 rounded-xl text-sm bg-gradient-to-br from-white/10 to-white/5 text-white shadow-lg transition-all duration-300 focus:outline-none focus:border-purple-500 focus:shadow-purple-500/40 focus:bg-gradient-to-br focus:from-white/15 focus:to-white/8 focus:-translate-y-0.5 min-h-24 resize-y'
-					/>
+						className={`w-full px-4 py-3 border rounded-xl text-sm 
+									bg-gradient-to-br from-white/10 to-white/5 
+									text-gray-900 placeholder-gray-400 shadow-lg 
+									transition-all duration-300 focus:outline-none 
+									focus:border-purple-500 focus:shadow-purple-500/40 
+									focus:bg-gradient-to-br focus:from-white/15 focus:to-white/8 
+									focus:-translate-y-0.5 min-h-32 resize-y`}					/>
 				</div>
 
 				<div className='flex flex-col gap-2'>
@@ -239,8 +269,13 @@ const Form = ({ onSubmit, loading }) => {
 						placeholder='Other relevant information that might affect the analysis...'
 						value={formData.additionalInfo}
 						onChange={e => setFormData({ ...formData, additionalInfo: e.target.value })}
-						className='w-full px-4 py-3 border border-white/20 rounded-xl text-sm bg-gradient-to-br from-white/10 to-white/5 text-white shadow-lg transition-all duration-300 focus:outline-none focus:border-purple-500 focus:shadow-purple-500/40 focus:bg-gradient-to-br focus:from-white/15 focus:to-white/8 focus:-translate-y-0.5 min-h-24 resize-y'
-					/>
+						className={`w-full px-4 py-3 border rounded-xl text-sm 
+									bg-gradient-to-br from-white/10 to-white/5 
+									text-gray-900 placeholder-gray-400 shadow-lg 
+									transition-all duration-300 focus:outline-none 
+									focus:border-purple-500 focus:shadow-purple-500/40 
+									focus:bg-gradient-to-br focus:from-white/15 focus:to-white/8 
+									focus:-translate-y-0.5 min-h-32 resize-y`}					/>
 				</div>
 
 				<div className='flex flex-col gap-2'>
@@ -252,9 +287,15 @@ const Form = ({ onSubmit, loading }) => {
 						placeholder='Enter blood test results...'
 						value={formData.bloodResults}
 						onChange={e => setFormData({ ...formData, bloodResults: e.target.value })}
-						className={`w-full px-4 py-3 border rounded-xl text-sm bg-gradient-to-br from-white/10 to-white/5 text-white shadow-lg transition-all duration-300 focus:outline-none focus:border-purple-500 focus:shadow-purple-500/40 focus:bg-gradient-to-br focus:from-white/15 focus:to-white/8 focus:-translate-y-0.5 min-h-32 resize-y ${
-							errors.bloodResults ? 'border-red-500 shadow-red-500/50' : 'border-white/20'
-						}`}
+						className={`w-full px-4 py-3 border rounded-xl text-sm 
+									bg-gradient-to-br from-white/10 to-white/5 
+									text-gray-900 placeholder-gray-400 shadow-lg 
+									transition-all duration-300 focus:outline-none 
+									focus:border-purple-500 focus:shadow-purple-500/40 
+									focus:bg-gradient-to-br focus:from-white/15 focus:to-white/8 
+									focus:-translate-y-0.5 min-h-32 resize-y ${
+										errors.bloodResults ? 'border-red-500 shadow-red-500/50' : 'border-white/20'
+									}`}
 					/>
 					{errors.bloodResults && <span className='text-red-400 text-xs font-bold mt-1'>{errors.bloodResults}</span>}
 				</div>
@@ -263,7 +304,7 @@ const Form = ({ onSubmit, loading }) => {
 					type='submit'
 					className='w-full max-w-xs mx-auto px-8 py-4 bg-gradient-to-r from-purple-500 to-purple-600 text-white font-bold text-lg rounded-2xl shadow-2xl hover:from-purple-600 hover:to-purple-700 hover:-translate-y-1 hover:shadow-purple-500/40 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none uppercase tracking-wide relative overflow-hidden'
 					disabled={loading}>
-					{loading ? `Analyzing${dots}` : 'Analyze Results'}
+					Analyze Results
 				</button>
 			</form>
 		</div>
