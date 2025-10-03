@@ -9,7 +9,7 @@ const Home = () => {
 	const handleSubmit = async prompt => {
 		setLoading(true);
 		try {
-			const response = await axios.post('http://localhost:8000/analyze', {
+			const response = await axios.post('http://localhost:8000/analyze_blood_results', {
 				blood_results: prompt,
 			});
 			setAnalysis(response.data.analysis);

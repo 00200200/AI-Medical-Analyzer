@@ -18,10 +18,23 @@ docker compose build
 docker compose up
 ```
 
+
+```bash 
+docker compose exec ollama ollama pull edwardlo12/medgemma-4b-it-Q4_K_M
+
+```
 The application will be available at:
 
 - Frontend: `http://localhost:3000`
 - Backend: `http://localhost:8000`
+
+### API EDNPOINTS
+
+ - /health - check if backend works
+ - /analyze_blood_results - analyze blood results
+ - /analyze_iamge - analyze x-ray image  
+
+
 
 ## 📁 Project Structure
 
