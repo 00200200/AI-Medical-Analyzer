@@ -13,7 +13,9 @@ const LandingPage = ({ navigateTo }) => {
 			<div className='relative z-10 max-w-6xl mx-auto'>
 				<div className='text-center mb-10 mt-10'>
 					<h1 className='text-3xl md:text-4xl font-bold mb-6'>
-						<span className='bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent' style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+						<span
+							className='bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent'
+							style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
 							Medical Analyzer
 						</span>
 					</h1>
@@ -36,13 +38,6 @@ const LandingPage = ({ navigateTo }) => {
 									</div>
 								</div>
 								<FaArrowRight className='text-2xl text-purple-400 group-hover:translate-x-2 transition-transform duration-300' />
-							</div>
-
-							<div className='space-y-4 mb-6'>
-								<div className='flex items-center space-x-3 text-gray-300'>
-									<div className='w-2 h-2 bg-red-400 rounded-full'></div>
-									<span>Complete blood count</span>
-								</div>
 							</div>
 
 							<div className='pt-4 border-t border-white/10'>
@@ -72,13 +67,6 @@ const LandingPage = ({ navigateTo }) => {
 									</div>
 								</div>
 								<FaArrowRight className='text-2xl text-blue-400 group-hover:translate-x-2 transition-transform duration-300' />
-							</div>
-
-							<div className='space-y-4 mb-6'>
-								<div className='flex items-center space-x-3 text-gray-300'>
-									<div className='w-2 h-2 bg-blue-400 rounded-full'></div>
-									<span>X-ray images</span>
-								</div>
 							</div>
 
 							<div className='pt-4 border-t border-white/10'>
