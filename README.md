@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🏥 MedicalAnalyzer
+# 🏥 AI-Medical-Analyzer
 
 > **AI-Powered Medical Analysis Platform**  
 > blood test interpretation and X-ray analysis using specialized MedGemma-4B model
@@ -18,8 +18,8 @@
 
 ```bash
 # Clone repository
-git clone https://github.com/00200200/MedicalAnalyzer.git
-cd MedicalAnalyzer
+git clone https://github.com/00200200/AI-Medical-Analyzer.git
+cd AI-Medical-Analyzer
 
 # Build and run the application
 docker compose build
@@ -111,7 +111,7 @@ The application uses a specialized medical AI model (MedGemma-4B) to provide:
 ## 📁 Project Structure
 
 ```
-MedicalAnalyzer/
+AI-Medical-Analyzer/
 ├── docker-compose.yml
 ├── docs/                    # Screenshots
 ├── backend/                 # FastAPI Backend
@@ -144,8 +144,6 @@ MedicalAnalyzer/
 - **Backend**: FastAPI, Python 3.11+, Pydantic
 - **AI Engine**: Ollama, MedGemma-4B
 - **Infrastructure**: Docker, Docker Compose
-
-
 
 ## ⚠️ Disclaimer
 
